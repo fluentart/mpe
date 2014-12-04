@@ -276,8 +276,9 @@ We want our designs to fit in with nature, instead of forcing nature to step asi
 </div>
 <!-- ^ ^ ^ ^ ^   TEXTBLOCK   ^ ^ ^ ^ ^  -->
 
-<!-- v v v v v    TEXTBLOCK    v v v v v  -->
+<!-- v v v v v    CONTACT    v v v v v  -->
 <a name="contact"></a>
+<form id="contactform" action="" method="post">
 <div class="contact padtop">
   <div class="wrappad bggray">
     <div class="pure-g">
@@ -286,16 +287,16 @@ We want our designs to fit in with nature, instead of forcing nature to step asi
         <form>
 
           <label>Name and Surname</label><br>
-          <input><br>
+          <input name="name"><br>
 
           <label>Email address</label><br>
-          <input type="email"><br>          
+          <input type="email" name="email"><br>          
 
           <label>Phone number</label><br>
-          <input placeholder="(optional) if you want us to call you"><br>    
+          <input name="phone" placeholder="(optional) if you want us to call you"><br>    
 
           <label>Message</label><br>
-          <textarea></textarea>
+          <textarea name="message"></textarea>
 
         </form>
       </div>
@@ -316,7 +317,7 @@ We want our designs to fit in with nature, instead of forcing nature to step asi
               South Africa</p><br><br>
         </div>
 
-        <a href="/"><div class="blockbutton contactsendbutton" style="position: absolute;">SEND MESSAGE</div></a>
+        <div class="blockbutton contactsendbutton" style="position: absolute;">SEND MESSAGE</div>
 
       </div>    
 
@@ -324,7 +325,20 @@ We want our designs to fit in with nature, instead of forcing nature to step asi
   </div>
 
 </div>
-<!-- ^ ^ ^ ^ ^   TEXTBLOCK   ^ ^ ^ ^ ^  -->
+</form>
+<script>
+$('.contactsendbutton').click( function() {
+    $.post( '/', $('#contactform').serialize(), function(data) {
+        console.log("recieved");
+        console.log(data);
+       }, 'json'
+    );
+    console.log("clicked");
+    console.log($('#contactform').serialize());
+});
+</script>
+
+<!-- ^ ^ ^ ^ ^   CONTACT   ^ ^ ^ ^ ^  -->
 
 <!-- v v v v v    FOOTER   v v v v v  -->
 <div class="topnav padtop bggray" style="padding-bottom: 200px;">
